@@ -1,13 +1,22 @@
 package at.ac.htlstp.demo.springbootrestclientopen;
 
+import at.ac.htlstp.demo.springbootrestclientopen.service.PingService;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 class SpringBootRestClientOpenApplicationTests {
 
+    @Autowired
+    private PingService pingService;
+
     @Test
-    void contextLoads() {
+    public void testPingGet() {
+        boolean result = pingService.ping(PingService.pingLocalRestServer);
+        assertTrue(result);
     }
 
 }
